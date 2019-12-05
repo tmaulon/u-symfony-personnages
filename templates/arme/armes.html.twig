@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Liste des armes
+{% endblock %}
+
+{% block monTitre %}
+	Liste des armes
+{% endblock %}
+
+{% block body %}
+	<table class="table">
+		<tr>
+			<th>Image</th>
+			<th>Arme</th>
+			<th>Degat</th>
+		</tr>
+
+		{% for arme in armes %}
+			<tr>
+				<td>
+					<img src="{{ asset('images/armes/' ~ arme.nom|replace({'é': 'e'}) ~ '.png') }}" alt="Illustration arme">
+				</td>
+				<td>
+					<a href="{{ path('afficher_arme', {'nom': arme.nom|replace({'é': 'e'})}) }}">
+						{{ arme.nom }}
+					</a>
+				</td>
+				<td>{{ arme.degat }}</td>
+			</tr>
+		{% endfor %}
+
+
+	</table>
+{% endblock %}
